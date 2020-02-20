@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+
 import java.util.ArrayList;
 
 
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 public class MovieFragment extends Fragment {
     private RecyclerView rvMovie;
     private ArrayList<Movie> list = new ArrayList<>();
+    private ProgressBar progressBar;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -74,9 +77,18 @@ public class MovieFragment extends Fragment {
             public void onItemClicked(Movie data) {
                 Intent intent = new Intent(getActivity() , DetailActivity.class);
                 intent.putExtra("EXTRA_MOVIE", data);
+                showLoading(true);
                 startActivity(intent);
             }
         });
+    }
+
+    private void showLoading(Boolean state) {
+        if (state) {
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
 

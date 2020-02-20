@@ -1,6 +1,8 @@
 package com.papb.submission2made;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -10,6 +12,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class SectionPagerAdapter extends FragmentPagerAdapter {
     private final Context mContext;
+    private ProgressBar progressBar;
 
     public SectionPagerAdapter(Context context,FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -45,5 +48,13 @@ public class SectionPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return 2;
+    }
+
+    private void showLoading(Boolean state) {
+        if (state) {
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 }
