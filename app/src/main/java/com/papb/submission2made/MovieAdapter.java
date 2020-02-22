@@ -17,6 +17,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ListViewHold
     private ArrayList<Movie> listMovie;
     private OnItemClickCallback onItemClickCallback;
     private View.OnClickListener onItemClickListener;
+
 //
 //    public void setOnItemClickListener(View.OnClickListener clickListener){
 //        onItemClickListener = clickListener;

@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +26,7 @@ public class MovieFragment extends Fragment {
     private RecyclerView rvMovie;
     private ArrayList<Movie> list = new ArrayList<>();
     private ProgressBar progressBar;
+    private MovieViewModel movieViewModel;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -40,7 +42,8 @@ public class MovieFragment extends Fragment {
 
         rvMovie = rootView.findViewById(R.id.rv_movie);
         rvMovie.setHasFixedSize(true);
-
+        movieViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MovieViewModel.class);
+        movieViewModel.getMovie();
         list.addAll(getListMovie());
         showRecyclerList();
 
